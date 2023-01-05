@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cricket-info-deployment
+  labels:
+    app: cricket-info
+spec: 
+  selector:
+    matchLabels: 
+      app: cricket-info
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: cricket-info
+    spec:
+      containers:
+        - name: cricket-info
+          image: cricket-info:1.0
+          imagePullPolicy: IfNotPresent
+          ports: 
+            - containerPort: 8080
